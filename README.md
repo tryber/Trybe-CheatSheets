@@ -5,21 +5,25 @@
 - [MongoDB Aggregation Cheat Sheet](#mongodb-aggregation-cheat-sheet)
 - [Sumário](#sumário)
 - [Operadores](#operadores)
-  - [$lookup (let/pipeline)](#lookup-letpipeline)
-  - [$add](#add)
-  - [$subtract](#subtract)
-  - [$ceil](#ceil)
-  - [$floor](#floor)
-  - [$abs](#abs)
-  - [$multiply](#multiply)
-  - [$divide](#divide)
-  - [$addFields](#addfields)
+  - [Operadores Aggregation](#operadores-aggregation)
+    - [$lookup (let/pipeline)](#lookup-letpipeline)
+    - [$addFields](#addfields)
+  - [Operadores Aritméticos](#operadores-aritméticos)
+    - [$add](#add)
+    - [$subtract](#subtract)
+    - [$ceil](#ceil)
+    - [$floor](#floor)
+    - [$abs](#abs)
+    - [$multiply](#multiply)
+    - [$divide](#divide)
 
 ---
 
 # Operadores
 
-## $lookup (let/pipeline)
+## Operadores Aggregation
+
+### $lookup (let/pipeline)
 
 **Template**
 
@@ -69,7 +73,47 @@ db.orders.aggregate([
 
 ---
 
-## $add
+### $addFields
+
+**Template**
+
+```
+db.collection.aggregate([
+  {
+    $addFields: {
+      <novoCampo1>: <valor> ,
+      <novoCampo2>: <valor> ,
+      ...
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.school.aggregate([
+  {
+    $addFields: {
+      totalHomework: { $sum: "$homework" } ,
+      totalQuiz: { $sum: "$quiz" }
+    },
+  },
+  {
+    $addFields: {
+      totalScore: {
+        $add: [ "$totalHomework", "$totalQuiz", "$extraCredit" ]
+      },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/)
+
+## Operadores Aritméticos
+
+### $add
 
 **Template**
 
@@ -104,7 +148,7 @@ db.products.aggregate([
 
 ---
 
-## $subtract
+### $subtract
 
 **Template**
 
@@ -145,7 +189,7 @@ db.products.aggregate([
 
 ---
 
-## $ceil
+### $ceil
 
 **Template**
 
@@ -180,7 +224,7 @@ db.movies.aggregate([
 
 ---
 
-## $floor
+### $floor
 
 **Template**
 
@@ -216,7 +260,7 @@ db.movies.aggregate([
 
 ---
 
-## $abs
+### $abs
 
 **Template**
 
@@ -249,7 +293,7 @@ db.operations.aggregate([
 
 ---
 
-## $multiply
+### $multiply
 
 **Template**
 
@@ -287,7 +331,7 @@ db.operations.aggregate([
 
 ---
 
-## $divide
+### $divide
 
 **Template**
 
@@ -320,41 +364,3 @@ db.employees.aggregate([
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/divide/)
 
 ---
-
-## $addFields
-
-**Template**
-
-```
-db.collection.aggregate([
-  {
-    $addFields: {
-      <novoCampo1>: <valor> ,
-      <novoCampo2>: <valor> ,
-      ...
-    },
-  },
-]);
-```
-
-**Exemplo**
-
-```javascript
-db.school.aggregate([
-  {
-    $addFields: {
-      totalHomework: { $sum: "$homework" } ,
-      totalQuiz: { $sum: "$quiz" }
-    },
-  },
-  {
-    $addFields: {
-      totalScore: {
-        $add: [ "$totalHomework", "$totalQuiz", "$extraCredit" ]
-      },
-    },
-  },
-]);
-```
-
-[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/)
