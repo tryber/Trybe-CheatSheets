@@ -2,8 +2,6 @@
 
 # Sumário
 
-- [MongoDB Aggregation Cheat Sheet](#mongodb-aggregation-cheat-sheet)
-- [Sumário](#sumário)
 - [Operadores](#operadores)
   - [$lookup (let/pipeline)](#lookup-letpipeline)
   - [$add](#add)
