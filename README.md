@@ -17,6 +17,178 @@
 
 # Operadores
 
+## $match
+
+**Template**
+
+```javascript
+db.collection.aggregate([
+  { $match: { <query> } },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.workers.aggregate([
+  { $match: { workerName: "Tiago" } },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/match/")
+
+---
+
+## $limit
+
+**Template**
+
+```javascript
+db.collection.aggregate([
+  { $limit: <inteiro positivo> },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.products.aggregate([
+	{ $match: { laptop: 'Dell' } },
+    { $limit: 5 },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/limit/")
+
+---
+
+## $group
+
+**Template**
+
+```javascript
+db.collection.aggregate([
+	{
+		$group: {
+		  _id: <expressão>,
+			<campo1>: { <acumulador1> : <expressão1> },
+			...
+			<campoN>: { <acumuladorN> : <expressãoN> },
+		},
+	},
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.products.aggregate([
+  {
+    $group : {
+      _id : "$laptopId",
+      count: { $sum: 1 },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/group/")
+
+---
+
+## $project
+
+**Template**
+
+```javascript
+db.collection.aggregate([
+  {
+    project: {
+      <especificação(ões)>
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.products.aggregate([
+  {
+    $project: {
+      _id: 0, // ou false
+      productName: "$laptop",
+      quantity: 1, // ou true
+      profit: {
+        $subtract: ["$sale_price", "$cost_price"]
+      },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/project)
+
+---
+
+## $unwind
+
+**Template**
+
+```javascript
+db.collection.aggregate([
+  { $unwind: <caminho do campo array> },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.streamings.aggregate([
+  { $unwind: "$netflix_plans" },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/unwind/)
+
+---
+
+## $lookup
+
+**Template**
+
+```javascript
+db.collection.aggregate([
+	{
+    $lookup: {
+      from: <coleção para unir>,
+      localField: <campo dos documentos de entrada>,
+      foreignField: <campo dos documentos provenientes da coleção conectada,
+      as: <campo do array de saída>
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.orders.aggregate([
+	{
+    $lookup: {
+      from: <inventory>,
+      localField: <item>,
+      foreignField: <sku>,
+      as: <inventory_docs>
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/)
+
+---
+
 ## $lookup (let/pipeline)
 
 **Template**
