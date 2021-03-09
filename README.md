@@ -180,10 +180,10 @@ db.collection.aggregate([
 db.orders.aggregate([
 	{
     $lookup: {
-      from: <inventory>,
-      localField: <item>,
-      foreignField: <sku>,
-      as: <inventory_docs>
+      from: "inventory",
+      localField: "item",
+      foreignField: "sku",
+      as: "inventory_docs"
     },
   },
 ]);
