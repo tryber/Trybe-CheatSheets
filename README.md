@@ -6,6 +6,12 @@
 - [Sumário](#sumário)
 - [Operadores](#operadores)
   - [Operadores Aggregation](#operadores-aggregation)
+    - [$match](#match)
+    - [$limit](#limit)
+    - [$group](#group)
+    - [$project](#project)
+    - [$unwind](#unwind)
+    - [$lookup](#lookup)
     - [$lookup (let/pipeline)](#lookup-letpipeline)
     - [$addFields](#addfields)
   - [Operadores Aritméticos](#operadores-aritméticos)
@@ -27,7 +33,7 @@
 
 **Template**
 
-```javascript
+```
 db.collection.aggregate([
   { $match: { <query> } },
 ]);
@@ -43,13 +49,15 @@ db.workers.aggregate([
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/match/")
 
+[Voltar para Sumário](#sumário)
+
 ---
 
 ### $limit
 
 **Template**
 
-```javascript
+```
 db.collection.aggregate([
   { $limit: <inteiro positivo> },
 ]);
@@ -66,13 +74,15 @@ db.products.aggregate([
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/limit/")
 
+[Voltar para Sumário](#sumário)
+
 ---
 
 ### $group
 
 **Template**
 
-```javascript
+```
 db.collection.aggregate([
 	{
 		$group: {
@@ -100,13 +110,15 @@ db.products.aggregate([
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/group/")
 
+[Voltar para Sumário](#sumário)
+
 ---
 
 ### $project
 
 **Template**
 
-```javascript
+```
 db.collection.aggregate([
   {
     project: {
@@ -135,13 +147,15 @@ db.products.aggregate([
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/project)
 
+[Voltar para Sumário](#sumário)
+
 ---
 
 ### $unwind
 
 **Template**
 
-```javascript
+```
 db.collection.aggregate([
   { $unwind: <caminho do campo array> },
 ]);
@@ -157,13 +171,15 @@ db.streamings.aggregate([
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/unwind/)
 
+[Voltar para Sumário](#sumário)
+
 ---
 
 ### $lookup
 
 **Template**
 
-```javascript
+```
 db.collection.aggregate([
 	{
     $lookup: {
@@ -192,6 +208,8 @@ db.orders.aggregate([
 ```
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/)
+
+[Voltar para Sumário](#sumário)
 
 ---
 
@@ -243,6 +261,8 @@ db.orders.aggregate([
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/)
 
+[Voltar para Sumário](#sumário)
+
 ---
 
 ### $addFields
@@ -283,6 +303,8 @@ db.school.aggregate([
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/)
 
+[Voltar para Sumário](#sumário)
+
 ## Operadores Aritméticos
 
 ### $add
@@ -317,6 +339,8 @@ db.products.aggregate([
 ```
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/add/)
+
+[Voltar para Sumário](#sumário)
 
 ---
 
@@ -359,6 +383,8 @@ db.products.aggregate([
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/subtract/)
 
+[Voltar para Sumário](#sumário)
+
 ---
 
 ### $ceil
@@ -393,6 +419,8 @@ db.movies.aggregate([
 ```
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/ceil/)
+
+[Voltar para Sumário](#sumário)
 
 ---
 
@@ -430,6 +458,8 @@ db.movies.aggregate([
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/floor/)
 
+[Voltar para Sumário](#sumário)
+
 ---
 
 ### $abs
@@ -462,6 +492,8 @@ db.operations.aggregate([
 ]);
 ```
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/abs/)
+
+[Voltar para Sumário](#sumário)
 
 ---
 
@@ -501,6 +533,8 @@ db.operations.aggregate([
 ```
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/multiply/)
 
+[Voltar para Sumário](#sumário)
+
 ---
 
 ### $divide
@@ -534,5 +568,7 @@ db.employees.aggregate([
 ]);
 ```
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/divide/)
+
+[Voltar para Sumário](#sumário)
 
 ---
