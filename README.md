@@ -3,21 +3,25 @@
 # Sumário
 
 - [Operadores](#operadores)
-  - [$lookup (let/pipeline)](#lookup-letpipeline)
-  - [$add](#add)
-  - [$subtract](#subtract)
-  - [$ceil](#ceil)
-  - [$floor](#floor)
-  - [$abs](#abs)
-  - [$multiply](#multiply)
-  - [$divide](#divide)
-  - [$addFields](#addfields)
+  - [Operadores Aggregation](#operadores-aggregation)
+    - [$lookup (let/pipeline)](#lookup-letpipeline)
+    - [$addFields](#addfields)
+  - [Operadores Aritméticos](#operadores-aritméticos)
+    - [$add](#add)
+    - [$subtract](#subtract)
+    - [$ceil](#ceil)
+    - [$floor](#floor)
+    - [$abs](#abs)
+    - [$multiply](#multiply)
+    - [$divide](#divide)
 
 ---
 
 # Operadores
 
-## $match
+## Operadores Aggregation
+
+### $match
 
 **Template**
 
@@ -39,7 +43,7 @@ db.workers.aggregate([
 
 ---
 
-## $limit
+### $limit
 
 **Template**
 
@@ -62,7 +66,7 @@ db.products.aggregate([
 
 ---
 
-## $group
+### $group
 
 **Template**
 
@@ -96,7 +100,7 @@ db.products.aggregate([
 
 ---
 
-## $project
+### $project
 
 **Template**
 
@@ -131,7 +135,7 @@ db.products.aggregate([
 
 ---
 
-## $unwind
+### $unwind
 
 **Template**
 
@@ -153,7 +157,7 @@ db.streamings.aggregate([
 
 ---
 
-## $lookup
+### $lookup
 
 **Template**
 
@@ -189,7 +193,7 @@ db.orders.aggregate([
 
 ---
 
-## $lookup (let/pipeline)
+### $lookup (let/pipeline)
 
 **Template**
 
@@ -239,7 +243,47 @@ db.orders.aggregate([
 
 ---
 
-## $add
+### $addFields
+
+**Template**
+
+```
+db.collection.aggregate([
+  {
+    $addFields: {
+      <novoCampo1>: <valor> ,
+      <novoCampo2>: <valor> ,
+      ...
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.school.aggregate([
+  {
+    $addFields: {
+      totalHomework: { $sum: "$homework" } ,
+      totalQuiz: { $sum: "$quiz" }
+    },
+  },
+  {
+    $addFields: {
+      totalScore: {
+        $add: [ "$totalHomework", "$totalQuiz", "$extraCredit" ]
+      },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/)
+
+## Operadores Aritméticos
+
+### $add
 
 **Template**
 
@@ -274,7 +318,7 @@ db.products.aggregate([
 
 ---
 
-## $subtract
+### $subtract
 
 **Template**
 
@@ -315,7 +359,7 @@ db.products.aggregate([
 
 ---
 
-## $ceil
+### $ceil
 
 **Template**
 
@@ -350,7 +394,7 @@ db.movies.aggregate([
 
 ---
 
-## $floor
+### $floor
 
 **Template**
 
@@ -386,7 +430,7 @@ db.movies.aggregate([
 
 ---
 
-## $abs
+### $abs
 
 **Template**
 
@@ -419,7 +463,7 @@ db.operations.aggregate([
 
 ---
 
-## $multiply
+### $multiply
 
 **Template**
 
@@ -457,7 +501,7 @@ db.operations.aggregate([
 
 ---
 
-## $divide
+### $divide
 
 **Template**
 
@@ -490,41 +534,3 @@ db.employees.aggregate([
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/divide/)
 
 ---
-
-## $addFields
-
-**Template**
-
-```
-db.collection.aggregate([
-  {
-    $addFields: {
-      <novoCampo1>: <valor> ,
-      <novoCampo2>: <valor> ,
-      ...
-    },
-  },
-]);
-```
-
-**Exemplo**
-
-```javascript
-db.school.aggregate([
-  {
-    $addFields: {
-      totalHomework: { $sum: "$homework" } ,
-      totalQuiz: { $sum: "$quiz" }
-    },
-  },
-  {
-    $addFields: {
-      totalScore: {
-        $add: [ "$totalHomework", "$totalQuiz", "$extraCredit" ]
-      },
-    },
-  },
-]);
-```
-
-[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/)
