@@ -47,7 +47,7 @@ db.workers.aggregate([
 ]);
 ```
 
-[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/match/")
+[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/match/)
 
 [Voltar para Sumário](#sumário)
 
@@ -72,7 +72,7 @@ db.products.aggregate([
 ]);
 ```
 
-[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/limit/")
+[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/limit/)
 
 [Voltar para Sumário](#sumário)
 
@@ -108,7 +108,7 @@ db.products.aggregate([
 ]);
 ```
 
-[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/group/")
+[Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/group/)
 
 [Voltar para Sumário](#sumário)
 
