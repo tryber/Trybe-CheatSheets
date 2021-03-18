@@ -33,7 +33,7 @@
 ### Instalação do sequelize
 
 ```bash
-\$ npm install sequelize
+$ npm install sequelize
 ```
 
 [Voltar para Sumário](#sumário)
@@ -43,7 +43,7 @@
 ### Instalação do pacote de comandos CLI
 
 ```bash
-\$ npm install --save-dev sequelize-cli
+$ npm install --save-dev sequelize-cli
 ```
 
 [Voltar para Sumário](#sumário)
@@ -53,7 +53,7 @@
 ### Instalação do `mysql2`
 
 ```bash
-\$ npm install mysql2
+$ npm install mysql2
 ```
 
 [Voltar para Sumário](#sumário)
@@ -65,7 +65,7 @@
 > O comando criará as pastas models, migrations, seeders e config.
 
 ```bash
-\$ npx sequelize-cli init
+$ npx sequelize-cli init
 ```
 
 [Voltar para Sumário](#sumário)
@@ -77,7 +77,7 @@
 > O comando irá gerar o arquivo model e o arquivo migration correspondente.
 
 ```bash
-\$ npx sequelize model:generate --name NomeDoModel --attributes nomeDoAtributo:string
+$ npx sequelize model:generate --name NomeDoModel --attributes nomeDoAtributo:string
 ```
 
 [Voltar para Sumário](#sumário)
@@ -89,7 +89,7 @@
 ### Criação de um arquivo _migration_ 
 
 ```bash
-\$ npx sequelize migration:generate --name migrationName
+$ npx sequelize migration:generate --name migrationName
 ```
 
 [Voltar para Sumário](#sumário)
@@ -99,7 +99,7 @@
 ### Execução dos arquivos _migration_ 
 
 ```bash
-\$ npx sequelize db:migrate
+$ npx sequelize db:migrate
 ```
 
 [Voltar para Sumário](#sumário)
@@ -109,7 +109,7 @@
 ### Reverter a _migration_
 
 ```bash
-\$ npx sequelize db:migrate:undo
+$ npx sequelize db:migrate:undo
 ```
 
 [Voltar para Sumário](#sumário)
@@ -119,7 +119,7 @@
 ### Reverter até uma _migration_ específica
 
 ```bash
-\$ npx sequelize-cli db:migrate:undo:all --to XXXXXXXXXXXXXX-create-posts.js
+$ npx sequelize-cli db:migrate:undo:all --to XXXXXXXXXXXXXX-create-posts.js
 ```
 
 [Voltar para Sumário](#sumário)
@@ -131,7 +131,7 @@
 ### Criação de um arquivo _seed_
 
 ```bash
-\$ npx sequelize seed:generate --name seedName
+$ npx sequelize seed:generate --name seedName
 ```
 
 [Voltar para Sumário](#sumário)
@@ -143,7 +143,7 @@
 > O comando executa **todos** os arquivos seeds
 
 ```bash
-\$ npx sequelize db:seed:all
+$ npx sequelize db:seed:all
 ```
 
 [Voltar para Sumário](#sumário)
@@ -155,7 +155,7 @@
 #### Reverter todos arquivos _seeds_ 
 
 ```bash
-\$ npx sequelize db:seed:undo:all
+$ npx sequelize db:seed:undo:all
 ```
 
 [Voltar para Sumário](#sumário)
@@ -165,7 +165,7 @@
 #### Reverter _seed_ mais recente 
 
 ```bash
-\$ npx sequelize-cli db:seed:undo
+$ npx sequelize-cli db:seed:undo
 ```
 
 [Voltar para Sumário](#sumário)
@@ -175,7 +175,7 @@
 #### Reverter _seed_ específica 
 
 ```bash
-\$ npx sequelize-cli db:seed:undo --seed name-of-seed-as-in-data
+$ npx sequelize-cli db:seed:undo --seed name-of-seed-as-in-data
 ```
 
 [Voltar para Sumário](#sumário)
