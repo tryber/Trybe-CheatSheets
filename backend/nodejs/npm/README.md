@@ -2,22 +2,21 @@
 
 # Sumário
 
-- [Comandos `npm`](#comandos-npm)
-  - [Criar novo pacote Node.js](#criar-novo-pacote-nodejs)
-    - [Cria o arquivo `package.json` personalizado](#cria-o-arquivo-packagejson-personalizado)
-    - [Cria o arquivo `package.json` padrão](#cria-o-arquivo-packagejson-padrão)
-  - [Instalar pacotes no Node.js](#instalar-pacotes-no-nodejs)
-    - [Instala **todas** as depedências do arquivo `package.json`](#instala-todas-as-depedências-do-arquivo-packagejson)
-    - [Instala o **pacote desejado** nas depedências do arquivo `package.json`](#instala-o-pacote-desejado-nas-depedências-do-arquivo-packagejson)
-    - [Instala o **pacote desejado** nas depedências de **desenvolvimento** do arquivo `package.json`](#instala-o-pacote-desejado-nas-depedências-de-desenvolvimento-do-arquivo-packagejson)
-  - [Remover pacotes no Node.js](#remover-pacotes-no-nodejs)
-    - [Remove o **pacote desejado** das depedências do arquivo `package.json`](#remove-o-pacote-desejado-das-depedências-do-arquivo-packagejson)
-  - [Criar scripts no arquivo `package.json`](#criar-scripts-no-arquivo-packagejson)
-    - [Cria script para iniciar a **aplicação principal**](#cria-script-para-iniciar-a-aplicação-principal)
-    - [Cria **script personalizado** para o pacote desejado](#cria-script-personalizado-para-o-pacote-desejado)
-  - [Executar scripts do arquivo `package.json`](#executar-scripts-do-arquivo-packagejson)
-    - [Executa a **aplicação principal** do pacote que esta criando](#executa-a-aplicação-principal-do-pacote-que-esta-criando)
-    - [Executa o **script registrado** no arquivo `package.json`](#executa-o-script-registrado-no-arquivo-packagejson)
+- [Criar novo pacote Node.js](#criar-novo-pacote-nodejs)
+  - [Cria o arquivo `package.json` personalizado](#cria-o-arquivo-packagejson-personalizado)
+  - [Cria o arquivo `package.json` padrão](#cria-o-arquivo-packagejson-padrão)
+- [Instalar pacotes no Node.js](#instalar-pacotes-no-nodejs)
+  - [Instala **todas** as depedências do arquivo `package.json`](#instala-todas-as-depedências-do-arquivo-packagejson)
+  - [Instala o **pacote desejado** nas depedências do arquivo `package.json`](#instala-o-pacote-desejado-nas-depedências-do-arquivo-packagejson)
+  - [Instala o **pacote desejado** nas depedências de **desenvolvimento** do arquivo `package.json`](#instala-o-pacote-desejado-nas-depedências-de-desenvolvimento-do-arquivo-packagejson)
+- [Remover pacotes no Node.js](#remover-pacotes-no-nodejs)
+  - [Remove o **pacote desejado** das depedências do arquivo `package.json`](#remove-o-pacote-desejado-das-depedências-do-arquivo-packagejson)
+- [Criar scripts no arquivo `package.json`](#criar-scripts-no-arquivo-packagejson)
+  - [Cria script para iniciar a **aplicação principal**](#cria-script-para-iniciar-a-aplicação-principal)
+  - [Cria **script personalizado** para o pacote desejado](#cria-script-personalizado-para-o-pacote-desejado)
+- [Executar scripts do arquivo `package.json`](#executar-scripts-do-arquivo-packagejson)
+  - [Executa a **aplicação principal** do pacote que esta criando](#executa-a-aplicação-principal-do-pacote-que-esta-criando)
+  - [Executa o **script registrado** no arquivo `package.json`](#executa-o-script-registrado-no-arquivo-packagejson)
 
 ---
 
