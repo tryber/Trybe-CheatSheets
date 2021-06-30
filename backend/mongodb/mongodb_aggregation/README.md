@@ -22,6 +22,15 @@
     - [$abs](#abs)
     - [$multiply](#multiply)
     - [$divide](#divide)
+  - [Operadores Comparativos](#operadores-comparativos)
+    - [$lt](#lt)
+    - [$lte](#lte)
+    - [$gt](#gt)
+    - [$gte](#gte)
+    - [$eq](#eq)
+    - [$ne](#ne)
+    - [$in](#in)
+    - [$nin](#nin)
 
 ---
 
@@ -568,6 +577,280 @@ db.employees.aggregate([
 ]);
 ```
 [Documentação](https://docs.mongodb.com/manual/reference/operator/aggregation/divide/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+## Operadores Comparativos
+
+### $lt
+
+  - **Lower Than** - Seleciona documentos cujo valor do campo especificado é **menor que** o valor especificado
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      <campo>: { $lt: <valor> },
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.vendas.find([
+  {
+    {
+      valor: { $lt: 100.00 },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/lt/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+### $lte
+
+  - **Lower Than or Equal** - Seleciona documentos cujo valor do campo especificado é **menor ou igual que** o valor especificado
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      <campo>: { $lte: <valor> },
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.vendas.find([
+  {
+    {
+      qtd: { $lte: 120 },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/lte/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+### $gt
+
+  - **Greater Than** - Seleciona documentos cujo valor do campo especificado é **maior que** o valor especificado
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      <campo>: { $gt: <valor> },
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.vendas.find([
+  {
+    {
+      valor: { $gt: 10.00 },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/gt/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+### $gte
+
+  - **Greater Than or Equal** - Seleciona documentos cujo valor do campo especificado é **maior ou igual que** o valor especificado
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      <campo>: { $gte: <valor> },
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.vendas.find([
+  {
+    {
+      qtd: { $gte: 10 },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/gte/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+### $eq
+
+  - **Equal** - Seleciona documentos cujo valor do campo especificado é **igual** ao valor especificado
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      <campo>: { $eq: <valor> },
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.consultas.find([
+  {
+    {
+      medico_id: { $eq: 174 },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/eq/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+### $ne
+
+  - **Not Equal** - Seleciona documentos cujo valor do campo especificado **não é igual** ao valor especificado
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      <campo>: { $ne: <valor> },
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.consultas.find([
+  {
+    {
+      medico_id: { $ne: 127 },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/ne/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+### $in
+
+  - **value In** - Seleciona documentos cujo campo especificado **possui valor igual a qualquer valor presente no array** passado para o operador
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      <campo>: { $in: [<valor1>, <valor2>, ...] },
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.consultas.find([
+  {
+    {
+      doenca_id: { $in: [201, 202, 203, 204, 205] },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/in/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+### $nin
+
+  - **value Not In** - Seleciona documentos cujo campo especificado **possui valor diferente a qualquer valor presente no array** passado para o operador
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      <campo>: { $nin: [<valor1>, <valor2>, ...] },
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.consultas.find([
+  {
+    {
+      sintomas_id: { $nin: [171, 174, 180] },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/nin/)
 
 [Voltar para Sumário](#sumário)
 
