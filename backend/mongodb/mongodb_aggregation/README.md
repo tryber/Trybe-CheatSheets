@@ -31,6 +31,11 @@
     - [$ne](#ne)
     - [$in](#in)
     - [$nin](#nin)
+  - [Operadores Lógicos](#operadores-lógicos)
+    - [$not](#not)
+    - [$or](#or)
+    - [$nor](#nor)
+    - [$and](#and)
 
 ---
 
@@ -851,6 +856,184 @@ db.consultas.find([
 ```
 
 [Documentação](https://docs.mongodb.com/manual/reference/operator/query/nin/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+## Operadores Lógicos
+
+### $not
+
+  - **Not** - Executa uma **operação de negação (NÃO)** com o operador ou com a expressão passada como parâmetro.
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      <campo>: { $not: { <operador ou expressão> } },
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.carros.find([
+  {
+    {
+      marca: { $not: 'Fiat' },
+    },
+  },
+]);
+```
+
+```javascript
+db.carros.find([
+  {
+    {
+      valor: { $not: { $gt: 12000.00 } },
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/not/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+### $or
+
+  - **Or** - Executa uma **operação de disjunção (OU)** com os operadores ou as expressões passadas como parâmetros em um array, selecionando os documentos onde alguma das expressões seja verdadeira.
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      $or: [{ <operador ou expressão 1> }, { <operador ou expressão 2> }, ...],
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.carros.find([
+  {
+    {
+      $or: [{ marca: 'Fiat' }, { marca: 'Ford' }],
+    }
+  },
+]);
+```
+
+```javascript
+db.carros.find([
+  {
+    {
+      $or: [{ ano: { $lte: 1980 } }, { ano: 2000 }] ,
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/or/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+### $nor
+
+  - **Not ... Or ...** - Executa uma **operação de negação (NÃO) conjunta** com os operadores ou as expressões passadas como parâmetros em um array, selecionando os documentos onde todas as expressões falhem.
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      $nor: [{ <operador ou expressão 1> }, { <operador ou expressão 2> }, ...],
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.carros.find([
+  {
+    {
+      $nor: [{ marca: 'Peugeot' }, { nome: 'Marea' }],
+    }
+  },
+]);
+```
+
+```javascript
+db.carros.find([
+  {
+    {
+      $nor: [{ valor: { $gte: 50000.00 } }, { ano: { $lt: 1990 } }] ,
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/nor/)
+
+[Voltar para Sumário](#sumário)
+
+---
+
+### $and
+
+  - **And** - Executa uma **operação de conjunção (E)** com os operadores ou as expressões passadas como parâmetros em um array, selecionando os documentos onde todas as expressões sejam verdadeira. Caso alguma falhe, o MongoDB não avaliará as expressões restantes.
+
+**Template**
+
+```
+db.collection.find([
+  {
+    {
+      $and: [{ <operador ou expressão 1> }, { <operador ou expressão 2> }, ...],
+    },
+  },
+]);
+```
+
+**Exemplo**
+
+```javascript
+db.cidades.find([
+  {
+    {
+      $and: [{ litoral: true }, { regiao_id: 1 }],
+    }
+  },
+]);
+```
+
+```javascript
+db.cidades.find([
+  {
+    {
+      $and: [{ populacao: { $gte: 1000000 } }, { regiao_id: { $in: [0, 1, 2] } }] ,
+    },
+  },
+]);
+```
+
+[Documentação](https://docs.mongodb.com/manual/reference/operator/query/and/)
 
 [Voltar para Sumário](#sumário)
 
