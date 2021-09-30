@@ -208,3 +208,60 @@ Lista todas as imagens.
 
 ### Comandos Dockerfile
 
+Esses comandos funcionan somente em um arquivo Dockerfile.
+```
+FROM <image>:<tag>
+```
+Esse comando é para escolhermos a imagem a ser usada em nosso dockerfile, lembrado que a tag da imagem é opcional se não escolhermos uma versão da imagem o docker vai pegar a versão mais recente.
+
+```
+COPY ["ARQUIVO-HOST", "PASTA-CONTAINER"]
+```
+O primeiro valor é sempre o valor que será copiado do nosso host, e o ultimo valor é o local onde será colado. Podemos copiar mais de um arquivo em um mesmo `COPY`.
+
+Exemplo:
+```
+COPY ["ARQUIVO1-HOST", "ARQUIVO2-HOST", "PASTA-CONTAINER"]
+```
+Podemos copiar quantos arquivos quisermos, o ultimo valor sempre será o valor para onde tudo será colado.
+
+```
+WORKDIR  /diretorio/que/sera/utilizado
+```
+WORKDIR defini um "diretório de trabalho", esse diretório é então utilizado como base para a execução dos comandos que vierem abaixo dele.
+
+```
+RUN <comando para executar na contrução do container>
+```
+O `RUN` é usado para executarmos comandos enquanto nosso container está sendo contruido.
+
+Exemplo:
+```
+RUN npm install
+```
+
+```
+ENTRYPOINT [<Comando>]
+```
+`ENTRYPOINT` é parecido com o comando `RUN`, a diferença é que o `ENTRYPOINT` é executado quando o container já está pronto.
+
+Exemplo
+```
+ENTRYPOINT ["npm","start"]
+```
+
+```
+LABEL <dados sobre o seu Dockerfile>
+```
+A `LABEL` é para colocarmos informações sobre o dockerfile, versão e criador.
+
+Exemplo:
+```
+LABEL maintener="John Doe john.doe@trybe.com.br"
+LABEL version="1.0"
+```
+
+```
+ENV <Variavel> = <valor>
+```
+o `ENV` é para criarmos variaveis de ambiente 
