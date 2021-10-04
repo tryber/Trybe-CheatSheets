@@ -1,10 +1,37 @@
 # Docker Comandos Cheat Sheets
 
 # Sumário
+- [Docker](#docker-cheat-sheet)
+- [Sumário](#sumário)
+- [Comandos](#comandos)
+  - [Como iniciar comandos docker](#como-iniciar-comandos-docker)
+    - [Comandos basicos do docker](#comandos-basicos-do-docker)
+    - [Parametros docker](#parametros-docker)
+    - [Lista de comandos mais utilizados no docker](#lista-de-comandos-mais-utilizados-no-docker)
+    - [Remover containers](#remover-containers)
+    - [Remover imagens](#remover-imagens)
+    - [Comando para baixar imagens](#comando-para-baixar-imagens)
+    - [Comandos de Rede](#comandos-de-rede)
+    - [Comando de volume](#comando-de-volume)
+    - [Comandos depreciados](#comandos-depreciados)
+  - [Comandos Dockerfile](#comandos-dockerfile)
+    - [FROM](#from)
+    - [COPY](#copy)
+    - [WORKDIR](#workdir)
+    - [RUN](#run)
+    - [ENTRYPOINT](#entrypoint)
+    - [LABEL](#label)
+    - [ENV](#env)
+    - [EXPOSE](#expose)
+  - [Comandos docker-compose](#comandos-docker-compose)
 
 
-### Para utilizar os comandos docker o mesmo será necessario estar instalado.
+## Para utilizar os comandos docker o mesmo será necessario estar instalado.
 Link da documentação para instalação: https://docs.docker.com/engine/install/
+
+# Comandos
+
+### Como iniciar comandos docker
 
 #### Todo o comando docker é iniciado com $ `docker` seguindo de uma comando e depois um parametro para definirmos o que vamos fazer com essa comando.
 ```
@@ -17,7 +44,7 @@ $ docker container ls
 ```
 Esse comando lista os containers ativos.
 
-## Vamos conhecer algumas comandos do docker.
+## Comandos basicos do docker
 
 Aqui irei somente listar as comandos existentes no docker.
 
@@ -33,6 +60,8 @@ $ docker container
 ```
 $ docker network
 ```
+
+[Voltar para Sumário](#sumário)
 ## Parametros docker
 ```
 ls
@@ -46,6 +75,8 @@ rm -f
 comandos de remoção.
 
 Com esses parametros podemos combina-los com qualquer comando.
+
+[Voltar para Sumário](#sumário)
 
 ## Lista de comandos mais utilizados no docker
 
@@ -101,7 +132,7 @@ Exemplo:
 ```
 $ docker container attach meu-container
 ```
-
+[Voltar para Sumário](#sumário)
 
 ---
 ### Remover containers
@@ -118,6 +149,8 @@ Exemplo
 ```
 $ docker container meu-container
 ```
+[Voltar para Sumário](#sumário)
+
 ---
 ### Remover imagens
 
@@ -138,6 +171,8 @@ Remove todas as imagens mesmo que tenham um container espelhado.
 
 * OBS: Ficara a alma da imagem, para ela ser removida completamente você irá precisar parar o container que está com a imagem rodando.
 
+[Voltar para Sumário](#sumário)
+
 ---
 ### Comando para baixar imagens
 
@@ -154,6 +189,8 @@ $ docker pull alpine
 
 $ docker pull alpine:3.13
 ```
+[Voltar para Sumário](#sumário)
+
 ---
 ### Comandos de Rede
 
@@ -166,7 +203,9 @@ $ docker run -d -p 54321:80 httpd:2.4
 ```
 O parametro `-p` é usado quando vamos mapear a porta manualmente.
 
-### Comandos de volume
+[Voltar para Sumário](#sumário)
+
+### Comando de volume
 
 ```
 docker run -d --name site-trybe -p 8881:80 -v <Meu-diretorio>:<container-diretorio> httpd:2.4
@@ -178,6 +217,8 @@ docker run -d --name site-trybe -p 8881:80 -v "/home/trybe/meu-site/:/usr/local/
 ```
 Locais de volumes dos containers podem ser encontrados em suas documentações.
 
+[Voltar para Sumário](#sumário)
+
 ---
 ### Comandos para parar container em background
 ```
@@ -188,6 +229,8 @@ Exemplo:
 ```
 $ docker stop site-trybe
 ```
+[Voltar para Sumário](#sumário)
+
 ---
 ### Comandos depreciados
 
@@ -204,16 +247,21 @@ $ docker images
 ```
 Lista todas as imagens.
 
----
+[Voltar para Sumário](#sumário)
 
+---
 ### Comandos Dockerfile
 
 Esses comandos funcionan somente em um arquivo Dockerfile.
+
+##### FROM
 ```
 FROM <image>:<tag>
 ```
 Esse comando é para escolhermos a imagem a ser usada em nosso dockerfile, lembrado que a tag da imagem é opcional se não escolhermos uma versão da imagem o docker vai pegar a versão mais recente.
 
+[Voltar para Sumário](#sumário)
+##### COPY
 ```
 COPY ["ARQUIVO-HOST", "PASTA-CONTAINER"]
 ```
@@ -225,11 +273,15 @@ COPY ["ARQUIVO1-HOST", "ARQUIVO2-HOST", "PASTA-CONTAINER"]
 ```
 Podemos copiar quantos arquivos quisermos, o ultimo valor sempre será o valor para onde tudo será colado.
 
+[Voltar para Sumário](#sumário)
+##### WORKDIR
 ```
 WORKDIR  /diretorio/que/sera/utilizado
 ```
 WORKDIR defini um "diretório de trabalho", esse diretório é então utilizado como base para a execução dos comandos que vierem abaixo dele.
 
+[Voltar para Sumário](#sumário)
+##### RUN
 ```
 RUN <comando para executar na contrução do container>
 ```
@@ -239,7 +291,8 @@ Exemplo:
 ```
 RUN npm install
 ```
-
+[Voltar para Sumário](#sumário)
+##### ENTRYPOINT
 ```
 ENTRYPOINT [<Comando>]
 ```
@@ -249,7 +302,8 @@ Exemplo
 ```
 ENTRYPOINT ["npm","start"]
 ```
-
+[Voltar para Sumário](#sumário)
+##### LABEL
 ```
 LABEL <dados sobre o seu Dockerfile>
 ```
@@ -260,8 +314,65 @@ Exemplo:
 LABEL maintener="John Doe john.doe@trybe.com.br"
 LABEL version="1.0"
 ```
-
+[Voltar para Sumário](#sumário)
+##### ENV
 ```
 ENV <Variavel> = <valor>
 ```
-o `ENV` é para criarmos variaveis de ambiente 
+o `ENV` é para criarmos variaveis de ambiente.
+
+[Voltar para Sumário](#sumário)
+##### EXPOSE
+```
+EXPOSE <PORT>
+```
+O `EXPOSE` é para expormos uma porta de acesso para o container.
+
+Exemplo:
+```
+EXPOSE 3000
+```
+[Voltar para Sumário](#sumário)
+### Comandos docker-compose
+
+```
+docker-compose up
+```
+Comando para subir seu documento docker-compose
+
+```
+docker-compose up --build
+```
+`--build` é quando atualizamos nosso compose e queremos subir essas atualizações.
+
+```
+docker-compose down
+```
+Comando para tirar do ar seu compose.
+
+```
+docker-compose ps
+```
+Comando para listar containers ativos que são referente ao seu documento docker-compose
+
+```
+docker-compose stop
+```
+Comando `stop` serve para parar um serviço refente ao documento docker-compose.
+
+```
+docker-compose start
+```
+O start funciona de maneira análoga ao stop, com ele podemos startar os services parados referentes àquele arquivo Compose.
+
+```
+docker-compose logs -f --tail=100
+```
+Comando  `-f` ou `--follow` serve para acompanhar em tempo real as saídas dos containers e o `--tail`, podemos definir o número de linhas para ser exibidos a partir do final dos log.
+
+```
+docker-compose scale web=4
+```
+Comando `scale` serve para escalar o nosso compose o `web` em 4 containers.
+
+[Voltar para Sumário](#sumário)
