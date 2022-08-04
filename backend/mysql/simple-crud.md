@@ -137,16 +137,16 @@ SELECT * FROM <nome-do-banco>.<nome-da-tabela> WHERE false; -- nenhuma linha
 
 | OPERADOR | DESCRIÇÃO | Exemplo 
 |:---:|:----------|:--|
-| =   | IGUAL | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 = 1;` |
-| >   | MAIOR QUE | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 > 1;` |
-| <   | MENOR QUE | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 < 10;`  |
-| >=  | MAIOR QUE OU IGUAL | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 >= 10;` |
-| <=  | MENOR QUE OU IGUAL  | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 <= 10;` |
-| <>  | DIFERENTE DE | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 <> 10;` |
-| AND | OPERADOR LÓGICO E | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 < 10 AND <nome-da-tabela>.coluna2 > 7;` |
-| OR  | OPERADOR LÓGICO OU | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 < 10 OR <nome-da-tabela>.coluna2 > 7 `|
-| NOT | NEGAÇÃO | `SELECT * from <nome-da-tabela> WHERE NOT <nome-da-tabela>.coluna1;` |
-| IS  | COMPARA COM VALORES BOOLEANOS (TRUE, FALSE, NULL) | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 IS NULL;` |
+| =   | IGUAL | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.<coluna1> = 1;` |
+| >   | MAIOR QUE | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.<coluna1> > 1;` |
+| <   | MENOR QUE | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.<coluna1> < 10;`  |
+| >=  | MAIOR QUE OU IGUAL | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.<coluna1> >= 10;` |
+| <=  | MENOR QUE OU IGUAL  | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.<coluna1> <= 10;` |
+| <>  | DIFERENTE DE | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.<coluna1> <> 10;` |
+| AND | OPERADOR LÓGICO E | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.<coluna1> < 10 AND <nome-da-tabela>.coluna2 > 7;` |
+| OR  | OPERADOR LÓGICO OU | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.<coluna1> < 10 OR <nome-da-tabela>.coluna2 > 7 `|
+| NOT | NEGAÇÃO | `SELECT * from <nome-da-tabela> WHERE NOT <nome-da-tabela>.<coluna1>;` |
+| IS  | COMPARA COM VALORES BOOLEANOS (TRUE, FALSE, NULL) | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.<coluna1> IS NULL;` |
 
 ---
 
