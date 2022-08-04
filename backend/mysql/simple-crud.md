@@ -5,6 +5,7 @@
     - [`DISTINCT`](#DISTINCT)
     - [`LIMIT` e `OFFSET`](#limit-e-offset)
     - [`ORDER BY`](#order-by)
+    - [`COUNT`](#count)
 - [`WHERE`](#WHERE)
     - [Condições](#Condições)
     - [Operadores Matemáticos](#Operadores-Matemáticos)
@@ -21,11 +22,14 @@
 
 
 ## `SELECT`
+
+**Template**
+
 ```sql
 SELECT
     [DISTINCT]
     expressão_de_coluna [, expressão_de_coluna] ...
-    [FROM tabela]
+    [FROM <nome-da-tabela>]
     [WHERE condição]
     [ORDER BY expressão_de_coluna [ASC | DESC]]
     [LIMIT contagem_de_linhas [OFFSET linha_puladas]]
@@ -35,21 +39,30 @@ SELECT
 > sintaxe `expressão [, expressão] ...;` representa que uma expressão é obrigatória, mas pode-se encadear mais expressões separadas por vírgula
 
 
+---
+
 ```sql
-SELECT * FROM banco.tabela;
-SELECT campo1, campo2 FROM banco.tabela;
+SELECT * FROM <nome-do-banco>.<nome-da-tabela>;
+SELECT <campo1>, <campo2> FROM <nome-do-banco>.<nome-da-tabela>;
 ```
+
+**Exemplo**
+
 
 ```sql
 SELECT * FROM sakila.actor;
 SELECT first_name, last_name FROM sakila.actor;
 ```
 
+---
+
 ### `DISTINCT`
 ```sql
-SELECT DISTINCT campo1 FROM banco.tabela;
-SELECT DISTINCT campo1, campo2 FROM banco.tabela;
+SELECT DISTINCT <campo1> FROM <nome-do-banco>.<nome-da-tabela>;
+SELECT DISTINCT <campo1>, <campo2> FROM <nome-do-banco>.<nome-da-tabela>;
 ```
+**Exemplo**
+
 ```sql
 SELECT DISTINCT first_name FROM sakila.actor;
 ```
@@ -59,10 +72,12 @@ SELECT DISTINCT first_name, last_name FROM sakila.actor;
 ### `LIMIT` e `OFFSET`
 
 ```sql
-SELECT * FROM banco.tabela LIMIT 10;
-SELECT * FROM banco.tabela OFFSET 10;
-SELECT * FROM banco.tabela LIMIT 10 OFFSET 10;
+SELECT * FROM <nome-do-banco>.<nome-da-tabela> LIMIT 10;
+SELECT * FROM <nome-do-banco>.<nome-da-tabela> OFFSET 10;
+SELECT * FROM <nome-do-banco>.<nome-da-tabela> LIMIT 10 OFFSET 10;
 ```
+
+**Exemplo**
 
 ```sql
 SELECT * FROM sakila.actor LIMIT 10;
@@ -70,35 +85,74 @@ SELECT * FROM sakila.actor OFFSET 10;
 SELECT * FROM sakila.actor LIMIT 10 OFFSET 10;
 ```
 
+---
+
 ### `ORDER BY` 
 
 ```sql
-SELECT * FROM banco ORDER BY field1 DESC; -- é ASC por padrão
-SELECT * FROM banco ORDER BY campo1 ASC, campo2 DESC;
+SELECT * FROM <nome-do-banco>.<nome-da-tabela> ORDER BY <campo1> DESC; -- é ASC por padrão
+SELECT * FROM <nome-do-banco>.<nome-da-tabela> ORDER BY <campo1> ASC, <campo2> DESC;
+```
+**Exemplo**
+
+```sql
+SELECT * FROM sakila.actor ORDER BY first_name DESC;
+SELECT * FROM sakila.actor ORDER BY first_name DESC, last_name ASC;
+SELECT * FROM sakila.payment ORDER BY payment_date ASC;
+SELECT * FROM sakila.payment ORDER BY amount DESC;
 ```
 
-## `WHERE`
+---
+
+---
+### `COUNT`
+
+**Template**
+
 ```sql
-SELECT * FROM banco WHERE condition;
-SELECT * FROM banco WHERE true;
+SELECT COUNT([DISTINCT] coluna [, coluna] ...) FROM <nome-do-banco>.<nome-da-tabela>;
 ```
+
+**Exemplo**
+
+```sql
+SELECT COUNT(*) FROM sakila.film;
+SELECT COUNT(DISTINCT first_name) FROM sakila.actor;
+SELECT COUNT(DISTINCT first_name, last_name) FROM sakila.actor;
+```
+
+---
+
+## `WHERE`
+
+```sql
+SELECT * FROM <nome-do-banco>.<nome-da-tabela> WHERE condition;
+SELECT * FROM <nome-do-banco>.<nome-da-tabela> WHERE true; -- todas as linhas
+SELECT * FROM <nome-do-banco>.<nome-da-tabela> WHERE false; -- nenhuma linha
+```
+
+---
 
 ### Condições
 
 | OPERADOR | DESCRIÇÃO | Exemplo 
 |:---:|:----------|:--|
-| =   | IGUAL | `SELECT * from tabela WHERE tabela.coluna1 = 1;` |
-| >   | MAIOR QUE | `SELECT * from tabela WHERE tabela.coluna1 > 1;` |
-| <   | MENOR QUE | `SELECT * from tabela WHERE tabela.coluna1 < 10;`  |
-| >=  | MAIOR QUE OU IGUAL | `SELECT * from tabela WHERE tabela.coluna1 >= 10;` |
-| <=  | MENOR QUE OU IGUAL  | `SELECT * from tabela WHERE tabela.coluna1 <= 10;` |
-| <>  | DIFERENTE DE | `SELECT * from tabela WHERE tabela.coluna1 <> 10;` |
-| AND | OPERADOR LÓGICO E | `SELECT * from tabela WHERE tabela.coluna1 < 10 AND tabela.coluna2 > 7;` |
-| OR  | OPERADOR LÓGICO OU | `SELECT * from tabela WHERE tabela.coluna1 < 10 OR tabela.coluna2 > 7 `|
-| NOT | NEGAÇÃO | `SELECT * from tabela WHERE NOT tabela.coluna1;` |
-| IS  | COMPARA COM VALORES BOOLEANOS (TRUE, FALSE, NULL) | `SELECT * from tabela WHERE tabela.coluna1 IS NULL;` |
+| =   | IGUAL | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 = 1;` |
+| >   | MAIOR QUE | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 > 1;` |
+| <   | MENOR QUE | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 < 10;`  |
+| >=  | MAIOR QUE OU IGUAL | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 >= 10;` |
+| <=  | MENOR QUE OU IGUAL  | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 <= 10;` |
+| <>  | DIFERENTE DE | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 <> 10;` |
+| AND | OPERADOR LÓGICO E | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 < 10 AND <nome-da-tabela>.coluna2 > 7;` |
+| OR  | OPERADOR LÓGICO OU | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 < 10 OR <nome-da-tabela>.coluna2 > 7 `|
+| NOT | NEGAÇÃO | `SELECT * from <nome-da-tabela> WHERE NOT <nome-da-tabela>.coluna1;` |
+| IS  | COMPARA COM VALORES BOOLEANOS (TRUE, FALSE, NULL) | `SELECT * from <nome-da-tabela> WHERE <nome-da-tabela>.coluna1 IS NULL;` |
+
+---
 
 ### Operadores Matemáticos
+
+**Exemplos**
 ```sql
 SELECT * FROM sakila.payment WHERE id = 1;
 ```
@@ -115,7 +169,12 @@ SELECT * FROM sakila.payment WHERE amount >= 0.99;
 SELECT * FROM sakila.language WHERE name <> 'English';
 ```
 
+---
+
 ### Operadores Lógicos
+
+**Exemplos**
+
 ```sql
 SELECT * FROM sakila.payment
 WHERE amount = 0.99 AND staff_id = 2;
@@ -131,19 +190,29 @@ SELECT * FROM sakila.payment
 WHERE amount = 0.99 OR amount = 2.99 AND staff_id = 2;
 ```
 
+---
+
 ### `IS`
+**Exemplo**
+
 ```sql
 SELECT * FROM sakila.staff WHERE picture IS NULL;
 ```
 
+---
 
 ### `NOT`
+
+**Exemplos**
+
 ```sql
 SELECT * FROM sakila.staff WHERE NOT address_id = 3;
 ```
 ```sql
 SELECT * FROM sakila.staff WHERE picture IS NOT NULL;
 ```
+
+---
 
 ### `LIKE`
 |Sinal| Descrição|
@@ -152,9 +221,10 @@ SELECT * FROM sakila.staff WHERE picture IS NOT NULL;
 | `_`|  O underscore (às vezes chamado de underline, no Brasil), que representa um único caractere |
 
 ```sql
-SELECT * FROM banco.table 
+SELECT * FROM <nome-do-banco>.<nome-da-tabela> 
     WHERE coluna LIKE '__string%';
 ```
+**Exemplos**
 
 ```sql
 SELECT * FROM sakila.film
@@ -183,7 +253,10 @@ SELECT * FROM sakila.film
     WHERE title LIKE '________';
 ```
 
+---
+
 ### `BETWEEN`
+**Exemplos**
 
 ```sql
 SELECT title, length FROM sakila.film
@@ -195,18 +268,28 @@ SELECT rental_id, rental_date FROM sakila.rental
     WHERE rental_date
         BETWEEN '2005-05-27' AND '2005-07-17';
 ```
+
+---
+
 ### `IN`
+
+**Exemplos**
+
 ```sql
 SELECT * FROM sakila.actor
-WHERE first_name IN ('PENELOPE','NICK','ED','JENNIFER');
+    WHERE first_name IN ('PENELOPE','NICK','ED','JENNIFER');
 ```
 
 ```sql
 SELECT * FROM sakila.actor
-WHERE id IN (1, 2, 3, 7, 48, 42);
+    WHERE id IN (1, 2, 3, 7, 48, 42);
 ```
+
+---
 
 ## `Datas`
+**Exemplos**
+
 ```sql
 SELECT DATE(payment_date) FROM sakila.payment; -- YYYY-MM-DD
 SELECT YEAR(payment_date) FROM sakila.payment; -- Ano
@@ -235,15 +318,15 @@ SELECT * FROM sakila.payment
     WHERE HOUR(payment_date) BETWEEN 10 AND 20;
 ```
 
+---
 
 ## `INSERT`
-- Inserir dados
-    - INSERT INTO banco_de_dados.tabela (campo1, campo2)
-    VALUES (valor1,valor2), (valor3,valor4) —(…)
-    ;
+
+**Template**
+
 ```sql
 INSERT [IGNORE]
-    [INTO] tabela
+    [INTO] <nome-da-tabela>
     [(coluna [, coluna] ...)]
     VALUES  (lista_de_valores) [, (lista_de_valores)] ... 
 
@@ -251,17 +334,25 @@ lista_de_valores:
     valor [, valor] ...
 ```
 
+**Exemplos**
+
 ```sql
 INSERT INTO sakila.actor (first_name, last_name)
-VALUES ('Bell', 'Hooks');
+    VALUES ('Bell', 'Hooks');
 ```
 ```sql
 INSERT INTO sakila.actor (first_name, last_name)
-VALUES ('Bell', 'Hooks'), ('Simone', 'Beauvoir');
+    VALUES ('Bell', 'Hooks'), ('Simone', 'Beauvoir');
 ```
+
+---
+
 ## `UPDATE`
+
+**Template**
+
 ```sql
-UPDATE [IGNORE] banco.tabela
+UPDATE [IGNORE] <nome-do-banco>.<nome-da-tabela>
     SET lista_de_atribuições 
     [WHERE condição]
     [ORDER BY ...]
@@ -273,33 +364,44 @@ lista_de_atribuições:
 atribuição:
     coluna = valor
 ```
-<!--     - UPDATE banco_de_dados.tabela
-    SET campo1 = valor1, campo2 = valor2 — (…) 
+<!--     - UPDATE <nome-do-banco_de_dados>.<nome-da-tabela>
+    SET <campo1> = valor1, <campo2> = valor2 — (…) 
     WHERE condição; -->
+**Exemplos**
 
 ```sql
-UPDATE sakila.staff
-    SET first_name = 'Bauman'
-    WHERE first_name = 'Ravein';
+UPDATE sakila.actor
+    SET last_name = 'Bauman'
+    WHERE first_name = 'ZERO';
 ```
 ```sql
 UPDATE sakila.staff
     SET first_name = 'Jean-Paul', last_name = 'Sartre'
-    WHERE first_name = 'Ravein';
+    WHERE first_name = 'Mike';
 ```
 ⚠️ Caso seja necessário fazer um `UPDATE` sem `WHERE`
 ```sql
 SET SQL_SAFE_UPDATES = 0;
 ```
 
+```sql
+UPDATE sakila.actor
+    SET first_name = 'Nina', last_name = 'Simone';
+```
+
 ## `DELETE`
 
+**Template**
+
 ```sql
-DELETE [IGNORE] FROM tabela 
+DELETE [IGNORE] FROM <nome-da-tabela> 
     [WHERE condição]
     [ORDER BY ...]
     [LIMIT contagem_de_linhas]
 ```
+
+**Exemplos**
+
 ```sql
 DELETE FROM sakila.actor
     WHERE first_name = 'NICK';
