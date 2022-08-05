@@ -57,18 +57,24 @@ SELECT first_name, last_name FROM sakila.actor;
 ---
 
 ### `DISTINCT`
+
+**Template**
+
 ```sql
 SELECT DISTINCT <campo1> FROM <nome-do-banco>.<nome-da-tabela>;
 SELECT DISTINCT <campo1>, <campo2> FROM <nome-do-banco>.<nome-da-tabela>;
 ```
+
 **Exemplo**
 
 ```sql
 SELECT DISTINCT first_name FROM sakila.actor;
 ```
+
 ```sql
 SELECT DISTINCT first_name, last_name FROM sakila.actor;
 ```
+
 ### `LIMIT` e `OFFSET`
 
 ```sql
@@ -89,10 +95,13 @@ SELECT * FROM sakila.actor LIMIT 10 OFFSET 10;
 
 ### `ORDER BY` 
 
+**Template**
+
 ```sql
 SELECT * FROM <nome-do-banco>.<nome-da-tabela> ORDER BY <campo1> DESC; -- é ASC por padrão
 SELECT * FROM <nome-do-banco>.<nome-da-tabela> ORDER BY <campo1> ASC, <campo2> DESC;
 ```
+
 **Exemplo**
 
 ```sql
@@ -101,8 +110,6 @@ SELECT * FROM sakila.actor ORDER BY first_name DESC, last_name ASC;
 SELECT * FROM sakila.payment ORDER BY payment_date ASC;
 SELECT * FROM sakila.payment ORDER BY amount DESC;
 ```
-
----
 
 ---
 ### `COUNT`
@@ -124,6 +131,8 @@ SELECT COUNT(DISTINCT first_name, last_name) FROM sakila.actor;
 ---
 
 ## `WHERE`
+
+**Template**
 
 ```sql
 SELECT * FROM <nome-do-banco>.<nome-da-tabela> WHERE condition;
@@ -153,6 +162,7 @@ SELECT * FROM <nome-do-banco>.<nome-da-tabela> WHERE false; -- nenhuma linha
 ### Operadores Matemáticos
 
 **Exemplos**
+
 ```sql
 SELECT * FROM sakila.payment WHERE id = 1;
 ```
@@ -193,6 +203,7 @@ WHERE amount = 0.99 OR amount = 2.99 AND staff_id = 2;
 ---
 
 ### `IS`
+
 **Exemplo**
 
 ```sql
@@ -208,6 +219,7 @@ SELECT * FROM sakila.staff WHERE picture IS NULL;
 ```sql
 SELECT * FROM sakila.staff WHERE NOT address_id = 3;
 ```
+
 ```sql
 SELECT * FROM sakila.staff WHERE picture IS NOT NULL;
 ```
@@ -220,10 +232,13 @@ SELECT * FROM sakila.staff WHERE picture IS NOT NULL;
 | `%` | O sinal de percentual, que pode representar zero, um ou múltiplos caracteres
 | `_`|  O underscore (às vezes chamado de underline, no Brasil), que representa um único caractere |
 
+**Template**
+
 ```sql
 SELECT * FROM <nome-do-banco>.<nome-da-tabela> 
     WHERE coluna LIKE '__string%';
 ```
+
 **Exemplos**
 
 ```sql
@@ -235,6 +250,7 @@ SELECT * FROM sakila.film
 SELECT * FROM sakila.film
     WHERE title LIKE 'plu%';
 ```
+
 ```sql
 SELECT * FROM sakila.film
 WHERE title LIKE '%plu%';
@@ -244,10 +260,12 @@ WHERE title LIKE '%plu%';
 SELECT * FROM sakila.film
     WHERE title LIKE 'p%r';
 ```
+
 ```sql
 SELECT * FROM sakila.film
     WHERE title LIKE '_C%';
 ```
+
 ```sql
 SELECT * FROM sakila.film
     WHERE title LIKE '________';
@@ -256,6 +274,7 @@ SELECT * FROM sakila.film
 ---
 
 ### `BETWEEN`
+
 **Exemplos**
 
 ```sql
@@ -288,6 +307,7 @@ SELECT * FROM sakila.actor
 ---
 
 ## `Datas`
+
 **Exemplos**
 
 ```sql
@@ -367,6 +387,7 @@ atribuição:
 <!--     - UPDATE <nome-do-banco_de_dados>.<nome-da-tabela>
     SET <campo1> = valor1, <campo2> = valor2 — (…) 
     WHERE condição; -->
+
 **Exemplos**
 
 ```sql
@@ -374,12 +395,15 @@ UPDATE sakila.actor
     SET last_name = 'Bauman'
     WHERE first_name = 'ZERO';
 ```
+
 ```sql
 UPDATE sakila.staff
     SET first_name = 'Jean-Paul', last_name = 'Sartre'
     WHERE first_name = 'Mike';
 ```
-⚠️ Caso seja necessário fazer um `UPDATE` sem `WHERE`
+
+⚠️ Caso seja necessário fazer um `UPDATE` sem `WHERE`:
+
 ```sql
 SET SQL_SAFE_UPDATES = 0;
 ```
@@ -407,10 +431,13 @@ DELETE FROM sakila.actor
     WHERE first_name = 'NICK';
 ```
 
-⚠️ Caso seja necessário fazer um `DELETE` sem `WHERE`
+
+⚠️ Caso seja necessário fazer um `DELETE` sem `WHERE`:
+
 ```sql
 SET SQL_SAFE_UPDATES = 0;
 ```
+
 ```sql
 DELETE FROM sakila.staff;
 ```
